@@ -1,0 +1,65 @@
+<div class="py-5">
+  <div class="container">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-8">
+        <h1 class="display-4 fw-bold">Welcome, {{ account?.firstName }}!</h1>
+        <p class="lead text-muted">
+          You're successfully logged in with Angular 21 & JWT Authentication
+        </p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <div class="card bg-light border-0">
+          <div class="card-body text-center">
+            <p class="text-muted small mb-0">Logged in as</p>
+            <h5 class="mt-2 mb-0">{{ account?.firstName }} {{ account?.lastName }}</h5>
+            <small class="text-primary">{{ account?.email }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card h-100 border-0">
+          <div class="card-body text-center py-5">
+            <h5 class="card-title mb-3"><i class="bi bi-shield-lock"></i> Secure Authentication</h5>
+            <p class="card-text text-muted">Your account is protected with JWT tokens .</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 border-0">
+          <div class="card-body text-center py-5">
+            <h5 class="card-title mb-3"><i class="bi bi-speedometer2"></i> Modern Framework</h5>
+            <p class="card-text text-muted">
+              Built with Angular 21, the latest features and best practices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card h-100 border-0">
+          <div class="card-body text-center py-5">
+            <h5 class="card-title mb-3"><i class="bi bi-person"></i> Manage Profile</h5>
+            <p class="card-text text-muted mb-3">
+              Update your personal information and account settings.
+            </p>
+            <a routerLink="/profile" class="btn btn-primary btn-sm">Go to Profile</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" *ngIf="account?.role === 'Admin'">
+        <div class="card h-100 border-0">
+          <div class="card-body text-center py-5">
+            <h5 class="card-title mb-3"><i class="bi bi-gear"></i> Administration</h5>
+            <p class="card-text text-muted mb-3">Manage users and system settings.</p>
+            <a routerLink="/admin" class="btn btn-primary btn-sm">Go to Admin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

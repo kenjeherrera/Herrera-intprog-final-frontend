@@ -1,0 +1,203 @@
+/* Bootstrap */
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
+/* ===============================
+   MODERN SOFT DASHBOARD THEME
+================================*/
+
+/* Color System */
+:root {
+  --primary: #2c7be5;
+  --primary-dark: #1a5bb8;
+  --accent: #00c9a7;
+  --danger: #ff4d6d;
+  --dark: #1f2937;
+  --gray: #6b7280;
+  --light-bg: #f4f7fb;
+
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --glass-blur: blur(10px);
+}
+
+/* Base Layout */
+body {
+  background: var(--light-bg);
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark);
+  min-height: 100vh;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ===============================
+   NAVBAR
+================================*/
+.navbar {
+  background: white !important;
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: var(--primary) !important;
+}
+
+.nav-link {
+  color: var(--gray) !important;
+  font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary) !important;
+}
+
+/* ===============================
+   ADMIN SUBNAV
+================================*/
+.admin-subnav {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 0;
+}
+
+.admin-subnav__heading {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.admin-subnav__pill {
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  background: #eef2ff;
+  color: var(--primary);
+  border: none;
+  transition: .3s;
+}
+
+.admin-subnav__pill:hover,
+.admin-subnav__pill.is-active {
+  background: var(--primary);
+  color: white;
+}
+
+/* ===============================
+   CARDS (GLASS EFFECT)
+================================*/
+.card {
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-header {
+  background: transparent;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ===============================
+   BUTTONS
+================================*/
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-danger {
+  background: var(--danger);
+}
+
+/* ===============================
+   FORMS
+================================*/
+.form-control,
+.form-select {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 0.7rem;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 .15rem rgba(44,123,229,.2);
+}
+
+/* ===============================
+   TABLE
+================================*/
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table thead {
+  background: var(--primary);
+  color: white;
+}
+
+.table tbody tr:hover {
+  background: #f1f5f9;
+}
+
+/* ===============================
+   ALERTS
+================================*/
+.alert {
+  border-radius: 10px;
+  border: none;
+}
+
+.alert-success {
+  background: #e6fffa;
+}
+
+.alert-danger {
+  background: #ffe6ea;
+}
+
+/* ===============================
+   TYPOGRAPHY
+================================*/
+h1,h2,h3,h4,h5 {
+  font-weight: 600;
+}
+
+/* ===============================
+   LINKS
+================================*/
+a {
+  color: var(--primary);
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* ===============================
+   SPINNER
+================================*/
+.spinner-border {
+  color: var(--primary);
+}

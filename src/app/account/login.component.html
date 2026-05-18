@@ -1,0 +1,55 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5 col-lg-4">
+      <div class="card border-0">
+        <h4 class="card-header text-center">Login</h4>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input
+                type="text"
+                formControlName="email"
+                class="form-control"
+                placeholder="Enter your email"
+                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+              />
+              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback d-block">
+                <small *ngIf="f['email'].errors['required']">Email is required</small>
+                <small *ngIf="f['email'].errors['email']"
+                  >Email must be a valid email address</small
+                >
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Password</label>
+              <input
+                type="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="Enter your password"
+                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+              />
+              <div *ngIf="submitted && f['password'].errors" class="invalid-feedback d-block">
+                <small *ngIf="f['password'].errors['required']">Password is required</small>
+              </div>
+            </div>
+            <div class="d-grid gap-2 mb-3">
+              <button [disabled]="loading" class="btn btn-primary btn-lg">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+                <span *ngIf="!loading">Login</span>
+                <span *ngIf="loading">Logging in...</span>
+              </button>
+            </div>
+            <div class="text-center">
+              <p class="mb-2">
+                <a routerLink="../register" class="btn btn-link btn-sm">Register Account</a>
+              </p>
+              <a routerLink="../forgot-password" class="btn btn-link btn-sm">Forgot Password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

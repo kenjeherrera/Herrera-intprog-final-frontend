@@ -1,0 +1,166 @@
+<div class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-6">
+        <h1 class="mb-4 text-center">Edit Profile</h1>
+        <div class="card border-0">
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <h5 class="mb-3 pb-2 border-bottom">Personal Information</h5>
+              <div class="row">
+                <div class="mb-3 col-12 col-sm-3">
+                  <label class="form-label">Title</label>
+                  <select
+                    formControlName="title"
+                    class="form-select"
+                    [ngClass]="{ 'is-invalid': submitted && f['title'].errors }"
+                  >
+                    <option value=""></option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Ms">Ms</option>
+                  </select>
+                  <div *ngIf="submitted && f['title'].errors" class="invalid-feedback d-block">
+                    <small *ngIf="f['title'].errors['required']">Title is required</small>
+                  </div>
+                </div>
+                <div class="mb-3 col-12 col-sm-4">
+                  <label class="form-label">First Name</label>
+                  <input
+                    type="text"
+                    formControlName="firstName"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"
+                  />
+                  <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback d-block">
+                    <small *ngIf="f['firstName'].errors['required']">First Name is required</small>
+                  </div>
+                </div>
+                <div class="mb-3 col-12 col-sm-5">
+                  <label class="form-label">Last Name</label>
+                  <input
+                    type="text"
+                    formControlName="lastName"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
+                  />
+                  <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback d-block">
+                    <small *ngIf="f['lastName'].errors['required']">Last Name is required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Email</label>
+                <input
+                  type="text"
+                  formControlName="email"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                />
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback d-block">
+                  <small *ngIf="f['email'].errors['required']">Email is required</small>
+                  <small *ngIf="f['email'].errors['email']"
+                    >Email must be a valid email address</small
+                  >
+                </div>
+              </div>
+
+              <h5 class="mb-3 pb-2 border-bottom">Change Password</h5>
+              <p class="text-muted small">Leave fields blank to keep your current password</p>
+              <div class="row">
+                <div class="mb-3 col-12 col-sm-6">
+                  <label class="form-label">New Password</label>
+                  <input
+                    type="password"
+                    formControlName="password"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                  />
+                  <div *ngIf="submitted && f['password'].errors" class="invalid-feedback d-block">
+                    <small *ngIf="f['password'].errors['minlength']"
+                      >Password must be at least 6 characters</small
+                    >
+                  </div>
+                </div>
+                <div class="mb-3 col-12 col-sm-6">
+                  <label class="form-label">Confirm Password</label>
+                  <input
+                    type="password"
+                    formControlName="confirmPassword"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+                  />
+                  <div
+                    *ngIf="submitted && f['confirmPassword'].errors"
+                    class="invalid-feedback d-block"
+                  >
+                    <small *ngIf="f['confirmPassword'].errors['mustMatch']"
+                      >Passwords must match</small
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 mt-4">
+                <button [disabled]="submitting" class="btn btn-primary">
+                  <span *ngIf="submitting" class="spinner-border spinner-border-sm me-2"></span>
+                  <span *ngIf="!submitting">Update Profile</span>
+                  <span *ngIf="submitting">Updating...</span>
+                </button>
+                <button
+                  type="button"
+                  (click)="openDeleteModal()"
+                  [disabled]="deleting"
+                  class="btn btn-danger btn-delete-account"
+                >
+                  <span *ngIf="deleting" class="spinner-border spinner-border-sm me-2"></span>
+                  <span *ngIf="!deleting">Delete Account</span>
+                  <span *ngIf="deleting">Deleting...</span>
+                </button>
+                <a routerLink="../" class="btn btn-outline-secondary">Cancel</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showDeleteModal" class="modal fade show d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeDeleteModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-0">
+          Are you sure you want to delete your account? This action cannot be undone.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="closeDeleteModal()">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          [disabled]="deleting"
+          (click)="confirmDelete()"
+        >
+          <span *ngIf="deleting" class="spinner-border spinner-border-sm me-2"></span>
+          <span *ngIf="!deleting">Delete</span>
+          <span *ngIf="deleting">Deleting...</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showDeleteModal" class="modal-backdrop fade show"></div>
