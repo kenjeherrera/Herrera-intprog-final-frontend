@@ -1,4 +1,1 @@
-export const environment = {
-    production: true,
-    apiUrl: 'https://herrera-intprog-backend.onrender.com'
-};
+export const environment = { production: false, apiUrl: 'https://herrera-backend.onrender.com' };
